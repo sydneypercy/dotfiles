@@ -187,15 +187,17 @@ bindsym $mod+r mode "resize"
 #        status_command i3status
 #}
 
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id picom -b
-exec --no-startup-id clipmenud
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec --no-startup-id clipit -n
+
+
 
 bindsym $mod+p exec --no-startup-id clipmenu
 
 
-default_border pixel 4 
+default_border pixel 4
 hide_edge_borders none
 
 #Gaps
