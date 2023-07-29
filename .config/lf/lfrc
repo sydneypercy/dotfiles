@@ -1,0 +1,10 @@
+# Basic config
+set hidden true
+set ignorecase true
+set icons true
+set drawbox true
+
+# Set file and image preview
+set previewer ~/.config/lf/lf_kitty_preview
+set cleaner ~/.config/lf/lf_kitty_clean
+
