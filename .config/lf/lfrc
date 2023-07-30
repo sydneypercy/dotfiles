@@ -8,3 +8,11 @@ set drawbox true
 set previewer ~/.config/lf/lf_kitty_preview
 set cleaner ~/.config/lf/lf_kitty_clean
 
+# Several integrations
+cmd trash %trash-put $fx
+
+cmd on_select &{{
+	lf -remote "send $id set statfmt \"$(exa -ld --color=always "$f")\""
+}}
+
+
