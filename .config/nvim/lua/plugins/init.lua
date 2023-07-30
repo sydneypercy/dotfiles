@@ -11,15 +11,14 @@ return {
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
-		dependencies =
-		"akinsho/bufferline.nvim"
+		dependencies = "akinsho/bufferline.nvim",
 	},
 
 	--Treesitter
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 
 	--Statuslines and winbar
-	{ "SmiteshP/nvim-navic",             dependencies = { "neovim/nvim-lspconfig" } },
+	{ "SmiteshP/nvim-navic", dependencies = { "neovim/nvim-lspconfig" } },
 
 	--LspConfig and Lspinstaller, and also the following configs beca why not
 
@@ -154,7 +153,7 @@ return {
 	{
 		"norcalli/nvim-colorizer.lua",
 		config = function()
-			require('colorizer').setup()
+			require("colorizer").setup()
 		end,
-	}
+	},
 }
