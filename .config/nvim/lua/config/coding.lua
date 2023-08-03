@@ -1,5 +1,6 @@
 --Navic setup
 require("mason").setup()
+require("mason-nvim-dap").setup()
 require("mason-lspconfig").setup()
 
 local navic = require("nvim-navic")
