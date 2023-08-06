@@ -1,3 +1,4 @@
+set ratios 1:2:3
 # Basic config
 set hidden true
 set ignorecase true
@@ -5,8 +6,8 @@ set icons true
 set drawbox true
 
 # Set file and image preview
-set previewer ~/.config/lf/lf_kitty_preview
-set cleaner ~/.config/lf/lf_kitty_clean
+set previewer ~/.config/lf/preview
+set cleaner ~/.config/lf/cleaner
 
 # Several integrations
 cmd trash %trash-put $fx
