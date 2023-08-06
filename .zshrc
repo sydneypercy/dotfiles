@@ -111,6 +111,7 @@ alias sudo="doas"
 alias sudoedit="doas rnano"
 alias neovide="neovide --multigrid"
 alias ls="exa --icons"
+alias lf="lfrun"
 alias la="exa -la"
 
 autoload -U compinit
@@ -162,10 +163,20 @@ export NNN_OPENER="$HOME/.config/nnn/plugins/nuke"
 export SPLIT='v'
 
 #LF config
-LFCD="$HOME/.config/lf/lfcd"
-if [[ -f "LFCD" ]]; then
-	source "$LFCD"
-fi
+lfcd () {
+    tmp="$(mktemp)"
+    # `command` is needed in case `lfcd` is aliased to `lf`
+    command lf -last-dir-path="$tmp" "$@"
+    if [ -f "$tmp" ]; then
+        dir="$(cat "$tmp")"
+        rm -f "$tmp"
+        if [ -d "$dir" ]; then
+            if [ "$dir" != "$(pwd)" ]; then
+                cd "$dir"
+            fi
+        fi
+    fi
+}
 
 
 # Zoxide config
