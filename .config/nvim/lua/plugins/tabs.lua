@@ -4,10 +4,10 @@ return {
 	version = "v3.*",
 	dependencies = "nvim-tree/nvim-web-devicons",
 	config = function()
-		Opt = nil
+		local opt = nil
 
 		if vim.cmd([[colorscheme]]) == "catppuccin" then
-			Opt = require("catppuccin.groups.integrations.bufferline").get()
+			opt = require("catppuccin.groups.integrations.bufferline").get()
 		end
 
 		vim.opt.termguicolors = true
