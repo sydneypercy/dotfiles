@@ -37,16 +37,6 @@ return {
 	--null-ls
 	"jose-elias-alvarez/null-ls.nvim",
 
-	-- auto pairs
-	{
-		"windwp/nvim-autopairs",
-		config = function()
-			require("nvim-autopairs").setup({})
-		end,
-	},
-
-	-- startup
-
 	--gitsigns
 	{
 		"lewis6991/gitsigns.nvim",

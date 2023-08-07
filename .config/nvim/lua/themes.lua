@@ -4,8 +4,8 @@ vim.cmd.colorscheme("catppuccin")
 
 require("catppuccin").setup({
 	--
-	flavour = "mocha", -- latte, frappe, macchiato, mocha
-	background = { -- :h background
+	flavour = "macchiato", -- latte, frappe, macchiato, mocha
+	background = {      -- :h background
 		light = "latte",
 		dark = "mocha",
 	},
@@ -53,12 +53,12 @@ require("catppuccin").setup({
 
 require("material").setup({
 	contrast = {
-		terminal = true, -- Enable contrast for the built-in terminal
-		sidebars = true, -- Enable contrast for sidebar-like windows ( for example Nvim-Tree )
+		terminal = true,       -- Enable contrast for the built-in terminal
+		sidebars = true,       -- Enable contrast for sidebar-like windows ( for example Nvim-Tree )
 		floating_windows = true, -- Enable contrast for floating windows
-		cursor_line = false, -- Enable darker background for the cursor line
+		cursor_line = false,   -- Enable darker background for the cursor line
 		non_current_windows = false, -- Enable darker background for non-current windows
-		filetypes = {}, -- Specify which filetypes get the contrasted (darker) background
+		filetypes = {},        -- Specify which filetypes get the contrasted (darker) background
 	},
 
 	styles = { -- Give comments style such as bold, italic, underline etc.
@@ -96,7 +96,7 @@ require("material").setup({
 
 	disable = {
 		colored_cursor = false, -- Disable the colored cursor
-		borders = true, -- Disable borders between verticaly split windows
+		borders = true,   -- Disable borders between verticaly split windows
 		background = false, -- Prevent the theme from setting the background (NeoVim then uses your terminal background)
 		term_colors = false, -- Prevent the theme from setting terminal colors
 		eob_lines = true, -- Hide the end-of-buffer lines
@@ -109,9 +109,9 @@ require("material").setup({
 
 	lualine_style = "default", -- Lualine style ( can be 'stealth' or 'default' )
 
-	async_loading = true, -- Load parts of the theme asyncronously for faster startup (turned on by default)
+	async_loading = true,   -- Load parts of the theme asyncronously for faster startup (turned on by default)
 
-	custom_colors = nil, -- If you want to everride the default colors, set this to a function
+	custom_colors = nil,    -- If you want to everride the default colors, set this to a function
 
 	custom_highlights = {}, -- Overwrite highlights with your own
 })
