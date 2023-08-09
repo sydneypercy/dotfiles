@@ -2,9 +2,6 @@ return {
 	-- ggame
 	"ThePrimeagen/vim-be-good",
 
-	--Faster load times
-	"lewis6991/impatient.nvim",
-
 	--themes
 	"navarasu/onedark.nvim",
 	"marko-cerovac/material.nvim",
@@ -61,13 +58,6 @@ return {
 	-- lspkind
 	"onsails/lspkind.nvim",
 
-	-- telescope and its plugins
-	{
-		"nvim-telescope/telescope.nvim",
-		dependencies = { { "nvim-lua/plenary.nvim" } },
-	},
-	"nvim-telescope/telescope-file-browser.nvim",
-
 	-- xml-lua.vim
 	"XeroOl/xml-lua.vim",
 
@@ -88,12 +78,9 @@ return {
 
 	--True zen
 	{
-		"loqusion/true-zen.nvim",
-		config = function()
-			require("true-zen").setup({
-				mode = {},
-			})
-		end,
+		"folke/zen-mode.nvim",
+		"folke/twilight.nvim",
+		opts = {},
 	},
 
 	{

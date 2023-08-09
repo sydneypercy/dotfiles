@@ -39,6 +39,7 @@ return {
 			dashboard.button("b", "  > File Browser", "<cmd>Telescope file_browser<cr>"),
 			dashboard.button("g", "  > Live Grep", "<cmd>Telescope live_grep<CR>"),
 			dashboard.button("r", "  > Recent", "<cmd>Telescope oldfiles<CR>"),
+			dashboard.button("t", "  > Theme", "<cmd>Telescope colorscheme<CR>"),
 			dashboard.button(
 				"s",
 				"  > Settings",
