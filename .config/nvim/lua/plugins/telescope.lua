@@ -7,6 +7,15 @@ return {
 			local tsc = require("telescope")
 
 			tsc.setup({
+				defaults= {
+					sorting_strategy = "ascending",
+					layout_strategy = "horizontal",
+					layout_config = {
+						horizontal = {
+							prompt_position = "top",
+						}
+					}
+				},
 				extensions = {
 					file_browser = {
 						theme = "ivy",
