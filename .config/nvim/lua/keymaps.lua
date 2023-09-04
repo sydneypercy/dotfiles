@@ -51,6 +51,6 @@ keymaps({
 	["<leader>Ca"] = { mode = { NORMAL }, "<cmd>CompetiTest add_testcase<cr>", { desc = "Add Testcases" } },
 	["<leader>th"] = { mode = { NORMAL }, "<cmd>Telescope colorscheme<cr>", { desc = "Change colorscheme" } },
 	["<leader>db"] = { mode = { NORMAL }, "<cmd>DapToggleBreakpoint<cr>", { desc = "Toggle Breakpoint" } },
-	["<leader>dc"] = { mode = { NORMAL }, "<cmd>DapTerminate<cr>", { desc = "Terminate Debuggin Session" } },
-	["<leader>dt"] = { mode = { NORMAL }, "<cmd>DapContinue<cr>", { desc = "Start Debugging / Continue Breakpoint" } },
+	["<leader>dt"] = { mode = { NORMAL }, "<cmd>DapTerminate<cr>", { desc = "Terminate Debuggin Session" } },
+	["<leader>dc"] = { mode = { NORMAL }, "<cmd>DapContinue<cr>", { desc = "Start Debugging / Continue Breakpoint" } },
 })
