@@ -35,7 +35,10 @@ require("catppuccin").setup({
 		cmp = true,
 		gitsigns = true,
 		nvimtree = true,
-		telescope = true,
+		telescope = {
+			enabled = true,
+			style = "nvchad",
+		},
 		treesitter = true,
 		indent_blankline = {
 			enabled = true,
