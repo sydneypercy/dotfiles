@@ -22,5 +22,5 @@ require("themes")
 require("keymaps")
 --Special to neovide
 if vim.g.neovide then
-	vim.o.guifont = "JetBrainsMono NF:h11"
+	vim.o.guifont = "JetBrainsMono NF:h9"
 end
