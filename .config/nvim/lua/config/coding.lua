@@ -180,9 +180,6 @@ lspconfig["texlab"].setup({
 	settings = {
 		texlab = {
 			rootDirectory = nil,
-
-			build = _G.TeXMagicBuildConfig,
-
 			forwardSearch = {
 				executable = "evince",
 				args = { "%p" },
