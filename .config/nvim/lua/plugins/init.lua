@@ -14,15 +14,7 @@ return {
 	--Treesitter
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 
-	--Statuslines and winbar
-	{ "SmiteshP/nvim-navic", dependencies = { "neovim/nvim-lspconfig" } },
-
-	--LspConfig and Lspinstaller, and also the following configs beca why not
-
-	"williamboman/mason.nvim",
-	"williamboman/mason-lspconfig.nvim",
-	"neovim/nvim-lspconfig",
-
+	-- Trouble.nvim
 	{
 		"folke/trouble.nvim",
 		dependencies = "nvim-tree/nvim-web-devicons",
@@ -30,9 +22,6 @@ return {
 			require("trouble").setup({})
 		end,
 	},
-
-	--null-ls
-	"jose-elias-alvarez/null-ls.nvim",
 
 	--gitsigns
 	{
@@ -42,21 +31,6 @@ return {
 			require("gitsigns").setup()
 		end,
 	},
-
-	-- Code Completion
-	"hrsh7th/cmp-nvim-lsp",
-	"hrsh7th/cmp-buffer",
-	"hrsh7th/cmp-path",
-	"hrsh7th/cmp-cmdline",
-	"hrsh7th/nvim-cmp",
-	-- luasnip
-	"L3MON4D3/LuaSnip",
-	"saadparwaiz1/cmp_luasnip",
-	-- snippets
-	"rafamadriz/friendly-snippets",
-
-	-- lspkind
-	"onsails/lspkind.nvim",
 
 	-- xml-lua.vim
 	"XeroOl/xml-lua.vim",
