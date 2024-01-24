@@ -1,7 +1,8 @@
 return {
-	"lukas-reineke/indent-blankline.nvim",
-	"HiPhish/rainbow-delimiters.nvim",
-	config = function()
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		config = function()
 		local highlight = {
 			"RainbowRed",
 			"RainbowYellow",
@@ -29,4 +30,6 @@ return {
 
 		hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
 	end,
+	},
+	"HiPhish/rainbow-delimiters.nvim",
 }
