@@ -1,0 +1,23 @@
+import = [
+  # uncomment the flavour you want below:
+  #"~/.config/alacritty/catppuccin-latte.toml"
+  # "~/.config/alacritty/catppuccin-frappe.toml"
+   "~/.config/alacritty/catppuccin-macchiato.toml"
+  # "~/.config/alacritty/catppuccin-mocha.toml"
+]
+
+[env]
+TERM = "xterm-256color"
+
+[window]
+padding = { x = 6, y = 5}
+dynamic_title = true
+dynamic_padding = true
+
+
+[font]
+normal= {family = "CozetteHiDpi", style = "Medium"}
+size = 9
+
+[cursor]
+style = {shape ="Beam", blinking = "On"}
