@@ -1,0 +1,33 @@
+alias sudo="doas"
+alias sudoedit="doas rnano"
+alias ls="exa --icons"
+alias la="exa -la"
+alias lf="lfrun"
+
+#testing
+#bwah
+autoload -U bashcompinit
+bashcompinit
+
+autoload -U compinit
+compinit
+
+eval "$(register-python-argcomplete pipx)"
+
+export PATH="$PATH:$HOME/.local/bin"
+export TERM="kitty"
+
+lfcd () {
+    # `command` is needed in case `lfcd` is aliased to `lf`
+    cd "$(lf -print-last-dir "$@")"
+}
+
+export EDITOR="nvim"
+eval "$(zoxide init zsh)"
+eval "$(oh-my-posh completion zsh)"
+eval "$(oh-my-posh init zsh --config ~/testing.omp.json)"
+
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+
