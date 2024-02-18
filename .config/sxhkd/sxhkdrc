@@ -1,0 +1,13 @@
+XF86MonBrightnessUp 
+	changebrightness up
+XF86MonBrightnessDown
+	changebrightness down
+Print
+	flameshot gui
+alt + F4
+	~/.config/rofi/powermenu/type-1/powermenu.sh
+XF86AudioRaiseVolume 
+	pactl set-sink-volume @DEFAULT_SINK@ +2%
+XF86AudioLowerVolume 
+	pactl set-sink-volume @DEFAULT_SINK@ -2%
+	
