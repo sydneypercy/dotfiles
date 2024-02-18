@@ -16,8 +16,8 @@ dynamic_padding = true
 
 
 [font]
-normal= {family = "CozetteHiDpi", style = "Medium"}
-size = 9
+normal= {family = "CozetteHiDpi"}
+size = 9 
 
 [cursor]
 style = {shape ="Beam", blinking = "On"}
