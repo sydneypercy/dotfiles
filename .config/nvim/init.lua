@@ -1,4 +1,4 @@
-vim.opt.termguicolors = true
+require("config")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -16,10 +16,15 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 
 --Bare Essentials
-require("lazy").setup("plugins")
-require("config")
-require("themes")
-require("keymaps")
+require("lazy").setup({ { import = "plugins" }, { import = "plugins.lsp" } }, {
+	checker = {
+		enabled = true,
+		notify = false,
+	},
+	change_detection = {
+		notify = false,
+	},
+})
 --Special to neovide
 if vim.g.neovide then
 	vim.o.guifont = "JetBrainsMono NF:h9"
