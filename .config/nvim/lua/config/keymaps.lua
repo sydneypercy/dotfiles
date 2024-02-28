@@ -35,15 +35,17 @@ vim.keymap.set("n", "<C-Tab>", "<cmd>BufferLineCycleNext<CR>", ns)
 vim.keymap.set("n", "<S-C-Tab>", "<cmd>BufferLineCyclePrev<CR>", ns)
 
 keymaps({
-	["<leader>/"] = { mode = { NORMAL }, "<cmd>Telescope current_buffer_fuzzy_find<cr>", { desc = "Fuzzy find" } },
+	["<leader>fwb"] = { mode = { NORMAL }, "<cmd>Telescope current_buffer_fuzzy_find<cr>", { desc = "Find word in buffer" } },
+	["<leader>fwp"] = { mode = { NORMAL }, "<cmd>Telescope live_grep<cr>", { desc = "Fuzzy word in current working directory" } },
 	["<leader>ff"] = { mode = { NORMAL }, "<cmd> Telescope fd<cr>", { desc = "Find files" } },
 	["<leader>fr"] = { mode = { NORMAL }, "<cmd> Telescope oldfiles<cr>", { desc = "Find recent files" } },
 	["<leader>fn"] = { mode = { NORMAL }, "<cmd>enew<cr>", { desc = "New File" } },
-	["<leader>bf"] = { mode = { NORMAL }, "<cmd>Telescope buffers<cr>", { desc = "Find buffer" } },
+	["<leader>fh"] = { mode = { NORMAL }, "<cmd>Telescope help_tags<cr>", { desc = "Search help tags" } },
+	["<leader>fb"] = { mode = { NORMAL }, "<cmd>Telescope buffers<cr>", { desc = "Find buffer" } },
+	["<leader>bf"] = { mode = { NORMAL }, "<cmd>Telescope file_browser<cr>", { desc = "Find buffer" } },
 	["<leader>bp"] = { mode = { NORMAL }, "<cmd>BufferLinePick<cr>", { desc = "Pick a buffer to choose" } },
 	["<leader>bd"] = { mode = { NORMAL }, "<cmd>BufferLinePickClose<cr>", { desc = "Pick a buffer to close" } },
 	["<leader>E"] = { mode = { NORMAL }, "<cmd>NvimTreeToggle<cr>", { desc = "Open explorer" } },
-	["<leader>ht"] = { mode = { NORMAL }, "<cmd>Telescope help_tags<cr>", { desc = "Search help tags" } },
 	["<leader>CRp"] = { mode = { NORMAL }, "<cmd>CompetiTest receive problem<cr>", { desc = "Recieve problem" } },
 	["<leader>CRc"] = { mode = { NORMAL }, "<cmd>CompetiTest receive contest<cr>", { desc = "Recieve contest" } },
 	["<leader>CRt"] = { mode = { NORMAL }, "<cmd>CompetiTest receive testcases<cr>", { desc = "Recieve testcases" } },
