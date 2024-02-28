@@ -10,7 +10,7 @@ set previewer ~/.config/lf/preview
 set cleaner ~/.config/lf/cleaner
 
 # Several integrations
-cmd trash %trash-put $fx
+cmd trash %trash-put "$fx"
 
 cmd on_select &{{
 	lf -remote "send $id set statfmt \"$(exa -ld --color=always "$f")\""
