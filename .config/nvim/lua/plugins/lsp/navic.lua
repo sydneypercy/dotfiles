@@ -32,6 +32,9 @@ return {
 				Operator = " ",
 				TypeParameter = " ",
 			},
+			lsp = {
+				auto_attach = true,
+			},
 			highlight = true,
 			separator = " > ",
 			depth_limit = 0,
@@ -40,5 +43,5 @@ return {
 		})
 
 		vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
-	end
+	end,
 }
