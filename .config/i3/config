@@ -46,7 +46,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec st
 # kill focused window
 bindsym $mod+q kill
 
@@ -101,7 +101,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+#bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -184,10 +184,12 @@ bindsym $mod+r mode "resize"
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id nitrogen --restore
-exec --no-startup-id picom -b --no-fading-openclose
+exec --no-startup-id picom -b
 exec --no-startup-id copyq
 exec --no-startup-id mpris-proxy
 exec --no-startup-id batsignal -b -I ~/.local/share/icons/battery-alert.png -w 30 -c 12 -d 5 -D "/usr/bin/systemctl hibernate"
+exec --no-startup-id conky
+exec --no-startup-id redshift-gtk
 
 default_border pixel 4
 default_floating_border pixel 3
@@ -196,6 +198,7 @@ hide_edge_borders none
 #Gaps
 gaps inner 5px
 gaps outer 5px
+gaps top 30px
 
 # Change colors
 set $rosewater #f4dbd6
