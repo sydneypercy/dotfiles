@@ -58,7 +58,7 @@ return {
 			--end
 
 			if client.server_capabilities.documentSymbolProvider then
-				navic.attach(client, bufnr)
+				require("nvim-navic").attach(client, bufnr)
 			end
 		end
 
