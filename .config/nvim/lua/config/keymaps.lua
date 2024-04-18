@@ -3,7 +3,6 @@ INSERT = "i"
 VISUAL = "v"
 COMMAND = "c"
 
-vim.g.mapleader = " "
 
 local function keymaps(tbl)
 	for i, val in pairs(tbl) do
@@ -55,4 +54,8 @@ keymaps({
 	["<leader>db"] = { mode = { NORMAL }, "<cmd>DapToggleBreakpoint<cr>", { desc = "Toggle Breakpoint" } },
 	["<leader>dt"] = { mode = { NORMAL }, "<cmd>DapTerminate<cr>", { desc = "Terminate Debuggin Session" } },
 	["<leader>dc"] = { mode = { NORMAL }, "<cmd>DapContinue<cr>", { desc = "Start Debugging / Continue Breakpoint" } },
+	["<C-d>"] = { mode = { NORMAL }, "<C-d>zz" },
+	["<C-u>"] = { mode = { NORMAL }, "<C-u>zz" },
+	["n"] = { mode = { NORMAL }, "nzzzv" },
+	["N"] = { mode = { NORMAL }, "Nzzzv" }
 })

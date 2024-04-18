@@ -26,5 +26,5 @@ require("lazy").setup({ { import = "plugins" }, { import = "plugins.lsp" } }, {
 })
 --Special to neovide
 if vim.g.neovide then
-	vim.o.guifont = "JetBrainsMono NF:h10"
+	vim.o.guifont = "CozetteVector:h12"
 end
