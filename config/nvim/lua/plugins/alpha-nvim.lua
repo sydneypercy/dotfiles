@@ -44,7 +44,7 @@ return {
 
 		dashboard.section.buttons.val = {
 			dashboard.button("e", "  > New file", "<cmd>ene <BAR> startinsert <CR>"),
-			dashboard.button("f", "  > Find file", "<cmd>Telescope find_files find_command=rg,--hidden,--files<CR>"),
+			dashboard.button("f", "⌕  > Find file", "<cmd>Telescope find_files find_command=rg,--hidden,--files<CR>"),
 			dashboard.button("b", "  > File Browser", "<cmd>Telescope file_browser<cr>"),
 			dashboard.button("g", "  > Live Grep", "<cmd>Telescope live_grep<CR>"),
 			dashboard.button("r", "  > Recent", "<cmd>Telescope oldfiles<CR>"),

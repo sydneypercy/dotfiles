@@ -241,4 +241,5 @@ assign [class="firefox"] $ws2
 assign [class="Spotify"] $ws3
 assign [class="discord"] $ws4
 assign [class="vesktop"] $ws4
+assign [class="LibreWolf"] $ws2
 
