@@ -19,6 +19,9 @@ eval "$(register-python-argcomplete pipx)"
 export PATH="$PATH:$HOME/.local/bin"
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 export MUSIC_DIR='~/Music'
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
 
 
 lfcd () {
