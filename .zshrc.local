@@ -35,6 +35,7 @@ eval "$(oh-my-posh completion zsh)"
 eval "$(oh-my-posh init zsh --config ~/testing.omp.json)"
 eval "$(warp-cli generate-completions zsh)"
 eval "$(fzf --zsh)"
+eval "$(ngrok completion)"
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
