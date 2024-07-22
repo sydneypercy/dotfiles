@@ -4,10 +4,11 @@ set hidden true
 set ignorecase true
 set icons true
 set drawbox true
+set sixel true
 
 # Set file and image preview
-set previewer ~/.config/lf/preview
-set cleaner ~/.config/lf/cleaner
+set previewer sixel
+# set cleaner ~/.config/lf/cleaner
 
 # Several integrations
 cmd trash %trash-put "$fx"
