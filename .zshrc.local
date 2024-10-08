@@ -2,13 +2,12 @@ alias sudo="doas"
 alias sudoedit="doas rnano"
 alias ls="exa --icons"
 alias la="exa -la"
-alias lf="lfrun"
+# alias lf="lfrun"
 alias nv="nvim"
 alias cd="z"
 alias cat="bat --paging=never"
 
 #testing
-#bwah
 autoload -U bashcompinit
 bashcompinit
 autoload -U compinit
@@ -24,17 +23,19 @@ export XMODIFIERS=@im=fcitx
 export QT_IM_MODULE=fcitx
 export QT_QPA_PLATFORMTHEME=qt5ct
 
-
-lfcd () {
-    # `command` is needed in case `lfcd` is aliased to `lf`
-    cd "$(lf -print-last-dir "$@")"
+function yy() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
 }
 
 export EDITOR="nvim"
 eval "$(zoxide init zsh)"
 eval "$(oh-my-posh completion zsh)"
 eval "$(oh-my-posh init zsh --config ~/testing.omp.json)"
-eval "$(warp-cli generate-completions zsh)"
 eval "$(fzf --zsh)"
 eval "$(ngrok completion)"
 

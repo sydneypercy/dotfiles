@@ -73,7 +73,16 @@ return {
 		--
 		local lspconfig = require("lspconfig")
 
-		local servers = { "ccls", "lua_ls", "pyright", "marksman", "rust_analyzer", "tsserver", "denols", "texlab" }
+		local servers = {
+			"ccls",
+			"lua_ls",
+			"pyright",
+			"marksman",
+			"rust_analyzer",
+			"denols",
+			"texlab",
+			"cssls",
+		}
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 		for _, lsp in pairs(servers) do
@@ -148,5 +157,5 @@ return {
 				},
 			},
 		})
-	end
+	end,
 }
