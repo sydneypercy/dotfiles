@@ -11,9 +11,7 @@ alias cat="bat --paging=never"
 autoload -U bashcompinit
 bashcompinit
 autoload -U compinit
-compinit
-
-eval "$(register-python-argcomplete pipx)"
+compinit eval "$(register-python-argcomplete pipx)"
 
 export PATH="$PATH:$HOME/.local/bin"
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
