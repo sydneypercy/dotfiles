@@ -9,7 +9,7 @@ return {
 		vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
 		vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
 		vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-		vim.keymap.set("n", "<space>q", "<cmd>TroubleToggle<cr>", opts)
+		vim.keymap.set("n", "<space>q", "<cmd>Trouble diagnostics<cr>", opts)
 
 		-- Use an on_attach function to only map the following keys
 		-- after the language server attaches to the current buffer
@@ -82,6 +82,7 @@ return {
 			"denols",
 			"texlab",
 			"cssls",
+			"jsonls",
 		}
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
