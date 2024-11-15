@@ -306,19 +306,38 @@ slider {
 }
 
 .widget-buttons-grid {
-  padding-top: 1rem;
+  font-size: 15px;
+  background: alpha(#494d64, 0.9);
+  font-family: "JetBrains Mono Nerd Font";
+  padding: 1em;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 10px;
+  background-color: alpha(#494d64, 0.9);
 }
 
+.widget-buttons-grid > flowbox > flowboxchild > button {
+	border-radius: 10px;
+	padding-left: 2.7em;
+	padding-right: 2.7em;
+	padding-top: 10px;
+	padding-bottom: 10px;
+    background-color:#363a4f;
+	margin: 2px;
+}
+
+
 .widget-buttons-grid > flowbox > flowboxchild > button label {
-  font-size: 2.5rem;
+  font-size: 1.5em;
 }
 
 .widget-volume {
-  padding-top: 1rem;
+  padding: 4px 8px 8px 8px;
+  margin: 0px 8px 0px 8px;
 }
 
 .widget-volume label {
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: #7dc4e4;
 }
 
@@ -326,12 +345,16 @@ slider {
   background: #7dc4e4;
 }
 
+.widget-backlight{
+  padding: 4px 8px 4px 8px;
+  margin: 4px 8px 8px 8px;
+}
 .widget-backlight trough highlight {
   background: #eed49f;
 }
 
 .widget-backlight label {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: #eed49f;
 }
 
@@ -341,5 +364,10 @@ slider {
 
 .image {
   padding-right: 0.5rem;
+}
+
+.toggle:checked{
+  color: #363a4f;
+  background-color: #7dc4e4;
 }
 
