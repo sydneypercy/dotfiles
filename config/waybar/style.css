@@ -421,6 +421,15 @@ label:focus {
 	border-radius: 10px;
 }
 
+#custom-updates{
+	background-color: @surface0;
+	color: @mauve;
+	border-radius: 10;
+	margin-top:10px;
+	margin-bottom: 5px;
+	padding: 0 10px;
+}
+
 #mpris{
 	color: @peach;
 	background-color: @surface0;
@@ -429,5 +438,7 @@ label:focus {
 	border-radius: 10px;
 	margin-top:10px;
 	margin-bottom: 5px;
+	margin-right: 1em;
+	margin-left: 1em;
 }
 
