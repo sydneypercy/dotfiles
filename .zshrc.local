@@ -16,9 +16,9 @@ compinit eval "$(register-python-argcomplete pipx)"
 export PATH="$PATH:$HOME/.local/bin"
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 export MUSIC_DIR='~/Music'
+export QT_IM_MODULE=fcitx
 export GTK_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
-export QT_IM_MODULE=fcitx
 export QT_QPA_PLATFORMTHEME=qt5ct
 
 function yy() {
