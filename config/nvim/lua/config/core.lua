@@ -13,7 +13,6 @@ vim.opt.autoindent = true
 vim.opt.clipboard = "unnamedplus"
 
 --Global Customization
-vim.opt.lazyredraw = true
 vim.opt.termguicolors = true
 
 -- Shell Customization

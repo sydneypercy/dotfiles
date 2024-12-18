@@ -78,7 +78,6 @@ return {
 			"lua_ls",
 			"pyright",
 			"marksman",
-			"rust_analyzer",
 			"denols",
 			"texlab",
 			"cssls",

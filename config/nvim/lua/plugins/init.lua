@@ -23,7 +23,7 @@ return {
 					non_current_windows = false, -- Enable darker background for non-current windows
 					filetypes = {}, -- Specify which filetypes get the contrasted (darker) background
 				},
-				styles = {        -- Give comments style such as bold, italic, underline etc.
+				styles = { -- Give comments style such as bold, italic, underline etc.
 					comments = { --[[ italic = true ]]
 					},
 					strings = { --[[ bold = true ]]
@@ -48,7 +48,8 @@ return {
 					-- "neogit",
 					"nvim-cmp",
 					"nvim-navic",
-					"nvim-tree", "nvim-web-devicons", -- "sneak", "telescope",
+					"nvim-tree",
+					"nvim-web-devicons", -- "sneak", "telescope",
 					-- "trouble",
 					"which-key",
 				},
@@ -181,7 +182,13 @@ return {
 	{
 		"folke/zen-mode.nvim",
 		"folke/twilight.nvim",
-		opts = {},
+		opts = {
+			plugins = {
+				options = {
+					laststatus = 0,
+				},
+			},
+		},
 	},
 
 	{
@@ -233,5 +240,20 @@ return {
 		config = function()
 			require("colorizer").setup()
 		end,
+	},
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		opts = {
+			-- add any options here
+		},
+		dependencies = {
+			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+			"MunifTanjim/nui.nvim",
+			-- OPTIONAL:
+			--   `nvim-notify` is only needed, if you want to use the notification view.
+			--   If not available, we use `mini` as the fallback
+			"rcarriga/nvim-notify",
+		},
 	},
 }
