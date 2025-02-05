@@ -2,7 +2,7 @@ configuration {
     modi: "drun,run,window";
     icon-theme: "Papirus";
     show-icons: true;
-    terminal: "st";
+    terminal: "foot";
     drun-display-format: "{icon} {name}";
     location: 0;
     disable-history: false;
@@ -14,4 +14,4 @@ configuration {
     sidebar-mode: true;
 }
 
-@theme "/home/sydney/.local/share/rofi/themes/catppuccin-macchiato.rasi"
+@theme "catppuccin-macchiato"

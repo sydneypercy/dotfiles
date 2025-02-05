@@ -13,6 +13,7 @@ bashcompinit
 autoload -U compinit
 compinit eval "$(register-python-argcomplete pipx)"
 
+export GRIMBLAST_EDITOR="swappy -f"
 export PATH="$PATH:$HOME/.local/bin:$HOME/.cargo/bin"
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 export MUSIC_DIR='~/Music'
