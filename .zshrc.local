@@ -33,12 +33,12 @@ function yy() {
 
 export EDITOR="nvim"
 eval "$(zoxide init zsh)"
-eval "$(oh-my-posh completion zsh)"
 eval "$(oh-my-posh init zsh --config ~/testing.omp.json)"
 eval "$(fzf --zsh)"
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-auto-venv/auto-venv.plugin.zsh
 source /usr/share/fzf/completion.zsh
 
 
