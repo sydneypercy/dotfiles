@@ -6,98 +6,63 @@ return {
 	},
 	config = function()
 		-- Mappings. See `:help vim.diagnostic.*` for documentation on any of the below functions local opts = { noremap = true, silent = true }
-		vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
-		vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-		vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-		vim.keymap.set("n", "<space>q", "<cmd>Trouble diagnostics<cr>", opts)
+		vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
+		vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
+		vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
+		vim.keymap.set("n", "<space>q", "<cmd>Trouble diagnostics toggle<cr>")
 
 		-- Use an on_attach function to only map the following keys
 		-- after the language server attaches to the current buffer
-		local on_attach = function(client, bufnr)
-			-- Enable completion triggered by <c-x><c-o>
-			vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-			-- Mappings.
-			-- See `:help vim.lsp.*` for documentation on any of the below functions
-			local bufopts = { noremap = true, silent = true, buffer = bufnr }
-			vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
-			vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-			vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
-			vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
-			vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
-			vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, bufopts)
-			vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
-			vim.keymap.set("n", "<space>wl", function()
-				print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-			end, bufopts)
-			vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, bufopts)
-			vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, bufopts)
-			vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
-			vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
-			vim.keymap.set("n", "<space>f", function()
-				vim.lsp.buf.format({ async = true })
-			end, bufopts)
-			vim.api.nvim_create_autocmd("CursorHold", {
-				buffer = bufnr,
-				callback = function()
-					---@diagnostic disable-next-line: redefined-local
-					local opts = {
-						focusable = false,
-						close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-						border = "rounded",
-						source = "always",
-						prefix = " ",
-						scope = "cursor",
-					}
-					vim.diagnostic.open_float(nil, opts)
-				end,
-			})
-
-			--if client == "ccls" then
-			--	client.server_capabilities.documentFormattingProvider = false
-			--	client.server_capabilities.documentRangeFormattingProvider = false
-			--end
-
-			if client.server_capabilities.documentSymbolProvider then
-				require("nvim-navic").attach(client, bufnr)
-			end
-		end
-
+		vim.api.nvim_create_autocmd("LspAttach", {
+			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+			callback = function(args)
+				-- Mappings.
+				-- See `:help vim.lsp.*` for documentation on any of the below functions
+				local opts = { buffer = args.buf }
+				vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+				vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+				vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+				vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+				vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+				vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
+				vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
+				vim.keymap.set("n", "<space>wl", function()
+					print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+				end, opts)
+				vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
+				vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
+				vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, opts)
+				vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+				vim.keymap.set("n", "<space>f", function()
+					vim.lsp.buf.format({ async = true })
+				end, opts)
+			end,
+		})
 		--diagnostics
 		local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 		for type, icon in pairs(signs) do
 			local hl = "DiagnosticSign" .. type
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 		end
+		vim.diagnostic.config({ virtual_lines = { current_line = true } })
 
 		-- Setup lspconfig.
-		--
-		local lspconfig = require("lspconfig")
 
 		local servers = {
 			"ccls",
 			"lua_ls",
 			"pyright",
 			"marksman",
-			"denols",
 			"texlab",
 			"cssls",
 			"jsonls",
 		}
+
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-		for _, lsp in pairs(servers) do
-			lspconfig[lsp].setup({
-				on_attach = on_attach,
-				flags = {
-					debounce_text_changes = 150,
-					capabilities = capabilities,
-				},
-			})
-		end
+		vim.lsp.config("*", { capabilities = capabilities })
 
-		lspconfig["ccls"].setup({
-			on_attach = on_attach,
-			capabilities = capabilities,
+		vim.lsp.config("ccls", {
 			init_options = {
 				highlight = {
 					isRanges = true,
@@ -115,47 +80,55 @@ return {
 			},
 		})
 
-		lspconfig["lua_ls"].setup({
-			on_attach = on_attach,
-			capabilities = capabilities,
-			settings = {
-				Lua = {
-					diagnostics = {
-						global = { "vim" },
-						disable = { "undefined-global" },
+		vim.lsp.config("lua_ls", {
+			on_init = function(client)
+				if client.workspace_folders then
+					local path = client.workspace_folders[1].name
+					if
+						path ~= vim.fn.stdpath("config")
+						and (vim.uv.fs_stat(path .. "/.luarc.json") or vim.uv.fs_stat(path .. "/.luarc.jsonc"))
+					then
+						return
+					end
+				end
+
+				client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
+					runtime = {
+						-- Tell the language server which version of Lua you're using (most
+						-- likely LuaJIT in the case of Neovim)
+						version = "LuaJIT",
+						-- Tell the language server how to find Lua modules same way as Neovim
+						-- (see `:h lua-module-load`)
+						path = {
+							"lua/?.lua",
+							"lua/?/init.lua",
+						},
 					},
-				},
-				workspace = {
-					library = vim.api.nvim_get_runtime_file("", true),
-				},
-				telemetry = { enable = false },
+					-- Make the server aware of Neovim runtime files
+					workspace = {
+						checkThirdParty = false,
+						library = {
+							vim.env.VIMRUNTIME,
+							-- Depending on the usage, you might want to add additional paths
+							-- here.
+							"${3rd}/luv/library",
+							-- '${3rd}/busted/library'
+						},
+						-- Or pull in all of 'runtimepath'.
+						-- NOTE: this is a lot slower and will cause issues when working on
+						-- your own configuration.
+						-- See https://github.com/neovim/nvim-lspconfig/issues/3189
+						-- library = {
+						--   vim.api.nvim_get_runtime_file('', true),
+						-- }
+					},
+				})
+			end,
+			settings = {
+				Lua = {},
 			},
 		})
 
-		lspconfig["ts_ls"].setup({
-			on_attach = on_attach,
-			capabilities = capabilities,
-			root_dir = lspconfig.util.root_pattern("package.json"),
-		})
-
-		lspconfig["denols"].setup({
-			on_attach = on_attach,
-			capabilities = capabilities,
-			root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
-		})
-
-		lspconfig["texlab"].setup({
-			cmd = { "texlab" },
-			filetypes = { "tex", "bib" },
-			settings = {
-				texlab = {
-					rootDirectory = nil,
-					forwardSearch = {
-						executable = "evince",
-						args = { "%p" },
-					},
-				},
-			},
-		})
+		vim.lsp.enable(servers)
 	end,
 }
