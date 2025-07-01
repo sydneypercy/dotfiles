@@ -6,7 +6,11 @@ local thing = {
 	config = function()
 		local ft = require("guard.filetype")
 		ft("lua"):fmt("lsp"):append("stylua")
-		ft("cpp"):fmt("clang-format")
+		ft("c,cpp"):fmt({
+			cmd = "clang-format",
+			args = { "-style={BasedOnStyle: LLVM,IndentWidth: 4}" },
+			stdin = true,
+		})
 
 		ft("typescript,javascript,html,css,scss,json,jsonc"):fmt({
 			cmd = "npx",
