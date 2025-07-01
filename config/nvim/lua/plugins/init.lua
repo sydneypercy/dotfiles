@@ -1,86 +1,11 @@
 return {
-	-- ggame
+	-- game
 	"ThePrimeagen/vim-be-good",
 	--themes
 	{
-		"navarasu/onedark.nvim",
-		config = function()
-			require("onedark").setup({
-				style = "deep",
-			})
-		end,
-	},
-	{
-		"marko-cerovac/material.nvim",
-		config = function()
-			vim.g.material_style = "palenight"
-			require("material").setup({
-				contrast = {
-					terminal = true, -- Enable contrast for the built-in terminal
-					sidebars = true, -- Enable contrast for sidebar-like windows ( for example Nvim-Tree )
-					floating_windows = true, -- Enable contrast for floating windows
-					cursor_line = false, -- Enable darker background for the cursor line
-					non_current_windows = false, -- Enable darker background for non-current windows
-					filetypes = {}, -- Specify which filetypes get the contrasted (darker) background
-				},
-				styles = { -- Give comments style such as bold, italic, underline etc.
-					comments = { --[[ italic = true ]]
-					},
-					strings = { --[[ bold = true ]]
-					},
-					keywords = { italic = true },
-					functions = { --[[ bold = true, undercurl = true ]]
-					},
-					variables = {},
-					operators = {},
-					types = {},
-				},
-
-				plugins = { -- Uncomment the plugins that you use to highlight them
-					-- Available plugins:
-					"dap",
-					"dashboard",
-					-- "gitsigns",
-					-- "hop",
-					"indent-blankline",
-					-- "lspsaga",
-					-- "mini",
-					-- "neogit",
-					"nvim-cmp",
-					"nvim-navic",
-					"nvim-tree",
-					"nvim-web-devicons", -- "sneak", "telescope",
-					-- "trouble",
-					"which-key",
-				},
-
-				disable = {
-					colored_cursor = false, -- Disable the colored cursor
-					borders = true, -- Disable borders between verticaly split windows
-					background = false, -- Prevent the theme from setting the background (NeoVim then uses your terminal background)
-					term_colors = false, -- Prevent the theme from setting terminal colors
-					eob_lines = true, -- Hide the end-of-buffer lines
-				},
-
-				high_visibility = {
-					lighter = false, -- Enable higher contrast text for lighter style
-					darker = true, -- Enable higher contrast text for darker style
-				},
-
-				lualine_style = "stealth", -- Lualine style ( can be 'stealth' or 'default' )
-
-				async_loading = true, -- Load parts of the theme asyncronously for faster startup (turned on by default)
-
-				custom_colors = nil, -- If you want to everride the default colors, set this to a function
-
-				custom_highlights = {}, -- Overwrite highlights with your own
-			})
-		end,
-	},
-	{
 		"catppuccin/nvim",
 		name = "catppuccin",
-		dependencies = "akinsho/bufferline.nvim",
+		priority = 1000,
 		config = function()
 			require("catppuccin").setup({
 				flavour = "macchiato", -- latte, frappe, macchiato, mocha
@@ -129,10 +54,11 @@ return {
 					dashboard = true,
 					mason = true,
 					which_key = true,
+					snacks = { enabled = true, indent_scope_color = "mauve" },
 					-- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
 				},
 			})
-			vim.cmd([[colorscheme catppuccin-macchiato]])
+			vim.cmd.colorscheme("catppuccin")
 		end,
 	},
 	-- Trouble.nvim
@@ -153,19 +79,6 @@ return {
 	},
 	-- xml-lua.vim
 	"XeroOl/xml-lua.vim",
-	--nvim-notify
-	{
-		"rcarriga/nvim-notify",
-		config = function()
-			notify = require("notify")
-			vim.notify = notify
-			notify.setup({
-				fps = 60,
-				stages = "slide",
-				timeout = 2500,
-			})
-		end,
-	},
 	--surround
 	{
 		"kylechui/nvim-surround",
@@ -192,55 +105,25 @@ return {
 	},
 
 	{
-		"jakewvincent/texmagic.nvim",
-		config = function()
-			require("texmagic").setup({
-				-- Config goes here; leave blank for defaults
-			})
-		end,
-	},
-
-	{
-		"CRAG666/code_runner.nvim",
-		dependencies = "nvim-lua/plenary.nvim",
-		config = function()
-			require("code_runner").setup({
-				filetype = {
-					java = {
-						"cd $dir &&",
-						"javac $fileName &&",
-						"java $fileNameWithoutExt",
-					},
-					python = "python3 -u",
-					typescript = "deno run",
-					rust = {
-						"cd $dir &&",
-						"rustc $fileName &&",
-						"$dir$fileNameWithoutExt",
-					},
-				},
-			})
-		end,
-	},
-
-	{
 		"folke/which-key.nvim",
-		config = function()
-			vim.o.timeout = true
-			vim.o.timeoutlen = 300
-			require("which-key").setup({
-				-- your configuration comes here
-				-- or leave it empty to  the default settings
-				-- refer to the configuration section below
-			})
-		end,
+		event = "VeryLazy",
+		opts = {
+			-- your configuration comes here
+			-- or leave it empty to use the default settings
+			-- refer to the configuration section below
+			preset = "modern",
+		},
+		keys = {
+			{
+				"<leader>?",
+				function()
+					require("which-key").show({ global = false })
+				end,
+				desc = "Buffer Local Keymaps (which-key)",
+			},
+		},
 	},
-	{
-		"norcalli/nvim-colorizer.lua",
-		config = function()
-			require("colorizer").setup()
-		end,
-	},
+
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
@@ -255,5 +138,25 @@ return {
 			--   If not available, we use `mini` as the fallback
 			"rcarriga/nvim-notify",
 		},
+		config = function()
+			require("noice").setup({
+				lsp = {
+					-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+					override = {
+						["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+						["vim.lsp.util.stylize_markdown"] = true,
+						["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+					},
+				},
+				-- you can enable a preset for easier configuration
+				presets = {
+					bottom_search = true, -- use a classic bottom cmdline for search
+					command_palette = true, -- position the cmdline and popupmenu together
+					long_message_to_split = true, -- long messages will be sent to a split
+					inc_rename = false, -- enables an input dialog for inc-rename.nvim
+					lsp_doc_border = false, -- add a border to hover docs and signature help
+				},
+			})
+		end,
 	},
 }
