@@ -2,14 +2,16 @@ return {
 	"akinsho/bufferline.nvim",
 	after = "catppuccin",
 	dependencies = "nvim-tree/nvim-web-devicons",
+	opts = {},
 	config = function()
-		require("catppuccin.groups.integrations.bufferline").get()
-
 		vim.opt.termguicolors = true
+		require("catppuccin.groups.integrations.bufferline").get()
 
 		require("bufferline").setup({
 			options = {
-				highlights = Opt,
+				indicator = {
+					style = "underline",
+				},
 				show_buffer_close_icons = false,
 				diagnostics = "nvim_lsp",
 				offsets = {
