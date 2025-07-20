@@ -31,6 +31,13 @@ function yy() {
 	rm -f -- "$tmp"
 }
 
+HISTDUP=erase
+
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
 export EDITOR="nvim"
 eval "$(zoxide init zsh)"
 eval "$(oh-my-posh init zsh --config ~/testing.omp.json)"
