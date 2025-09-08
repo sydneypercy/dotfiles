@@ -1,2 +1,3 @@
-# Created by `pipx` on 2023-07-05 10:57:56
-export CM_LAUNCHER=rofi
+
+# Created by `pipx` on 2023-09-04 00:13:38
+export PATH="$PATH:/home/sydney/.local/bin"
