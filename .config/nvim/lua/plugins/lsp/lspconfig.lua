@@ -56,7 +56,7 @@ return {
 			"texlab",
 			"cssls",
 			"jsonls",
-			"qmlls"
+			"qmlls",
 		}
 
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -79,6 +79,10 @@ return {
 					snippetSupport = true,
 				},
 			},
+		})
+
+		vim.lsp.config("qmlls", {
+			cmd = { "qmlls", "-E" },
 		})
 
 		vim.lsp.config("lua_ls", {
