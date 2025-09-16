@@ -1,3 +1,6 @@
+// @import "catppuccin-macchiato"
+@theme "catppuccin-default"
+
 configuration {
     modi: "drun,run,window";
     icon-theme: "Papirus";
@@ -14,4 +17,3 @@ configuration {
     sidebar-mode: true;
 }
 
-@theme "catppuccin-macchiato"
