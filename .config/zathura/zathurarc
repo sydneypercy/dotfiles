@@ -2,4 +2,3 @@ include catppuccin-macchiato
 
 set selection-clipboard clipboard
 set recolor-keephue true
-set database sqlite
