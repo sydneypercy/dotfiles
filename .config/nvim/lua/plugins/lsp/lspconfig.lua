@@ -49,6 +49,7 @@ return {
 		-- Setup lspconfig.
 
 		local servers = {
+			"clangd",
 			"ccls",
 			"lua_ls",
 			"pyright",
