@@ -45,6 +45,11 @@
             "state": "transient",
             "urgency": "Low",
             "app-name": "Spotify"
+        },
+        "flameshot": {
+            "state": "transient",
+            "urgency": "Low",
+            "app-name": "flameshot"
         }
     },
     "widgets": [
