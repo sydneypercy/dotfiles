@@ -13,51 +13,60 @@ return {
 					light = "latte",
 					dark = "macchiato",
 				},
-				compile_path = vim.fn.stdpath("cache") .. "/catppuccin",
-				transparent_background = false,
-				term_colors = false,
-				dim_inactive = {
-					enabled = false,
-					shade = "dark",
-					percentage = 0.15,
+				transparent_background = false, -- disables setting the background color.
+				float = {
+					transparent = true, -- enable transparent floating windows
+					solid = false, -- use solid styling for floating windows, see |winborder|
 				},
-				styles = {
-					comments = { "italic" },
+				show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
+				term_colors = false, -- sets terminal colors (e.g. `g:terminal_color_0`)
+				dim_inactive = {
+					enabled = false, -- dims the background color of inactive window
+					shade = "dark",
+					percentage = 0.15, -- percentage of the shade to apply to the inactive window
+				},
+				no_italic = false, -- Force no italic
+				no_bold = false, -- Force no bold
+				no_underline = false, -- Force no underline
+				styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
+					comments = { "italic" }, -- Change the style of comments
 					conditionals = { "italic" },
-					loops = { "italic" },
+					loops = {},
 					functions = {},
-					keywords = { "bold" },
+					keywords = {},
 					strings = {},
 					variables = {},
 					numbers = {},
 					booleans = {},
 					properties = {},
-					types = { "italic" },
-					operators = { "bold" },
+					types = {},
+					operators = {},
+					-- miscs = {}, -- Uncomment to turn off hard-coded styles
 				},
 				color_overrides = {},
 				custom_highlights = {},
+				default_integrations = true,
+				auto_integrations = true,
 				integrations = {
 					cmp = true,
 					gitsigns = true,
 					nvimtree = true,
-					telescope = {
-						enabled = true,
-						style = "nvchad",
-					},
 					treesitter = true,
-					indent_blankline = {
+					notify = false,
+					mini = {
 						enabled = true,
-						colored_indent_levels = false,
+						indentscope_color = "",
 					},
-					notify = true,
-					dashboard = true,
-					mason = true,
-					which_key = true,
-					snacks = { enabled = true, indent_scope_color = "mauve" },
+					snacks = {
+						enabled = true,
+						indent_scope_color = "mauve", -- catppuccin color (eg. `lavender`) Default: text
+					},
+					nvim_surround = true,
 					-- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
 				},
 			})
+
+			-- setup must be called before loading
 			vim.cmd.colorscheme("catppuccin")
 		end,
 	},
@@ -128,7 +137,21 @@ return {
 		"folke/noice.nvim",
 		event = "VeryLazy",
 		opts = {
-			-- add any options here
+			lsp = {
+				-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+				override = {
+					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+					["vim.lsp.util.stylize_markdown"] = true,
+				},
+			},
+			-- you can enable a preset for easier configuration
+			presets = {
+				bottom_search = true, -- use a classic bottom cmdline for search
+				command_palette = true, -- position the cmdline and popupmenu together
+				long_message_to_split = true, -- long messages will be sent to a split
+				inc_rename = false, -- enables an input dialog for inc-rename.nvim
+				lsp_doc_border = true, -- add a border to hover docs and signature help
+			},
 		},
 		dependencies = {
 			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
@@ -138,25 +161,5 @@ return {
 			--   If not available, we use `mini` as the fallback
 			"rcarriga/nvim-notify",
 		},
-		config = function()
-			require("noice").setup({
-				lsp = {
-					-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-					override = {
-						["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-						["vim.lsp.util.stylize_markdown"] = true,
-						["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
-					},
-				},
-				-- you can enable a preset for easier configuration
-				presets = {
-					bottom_search = true, -- use a classic bottom cmdline for search
-					command_palette = true, -- position the cmdline and popupmenu together
-					long_message_to_split = true, -- long messages will be sent to a split
-					inc_rename = false, -- enables an input dialog for inc-rename.nvim
-					lsp_doc_border = false, -- add a border to hover docs and signature help
-				},
-			})
-		end,
 	},
 }
