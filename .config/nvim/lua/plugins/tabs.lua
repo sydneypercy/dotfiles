@@ -5,23 +5,8 @@ return {
 	opts = {},
 	config = function()
 		vim.opt.termguicolors = true
-		local macchiato = require("catppuccin.palettes").get_palette("macchiato")
-
 		require("bufferline").setup({
-			highlights = require("catppuccin.groups.integrations.bufferline").get_theme({
-				styles = { "italic", "bold" },
-				custom = {
-					all = {
-						fill = { bg = "#000000" },
-					},
-					mocha = {
-						background = { fg = macchiato.text },
-					},
-					latte = {
-						background = { fg = "#000000" },
-					},
-				},
-			}),
+			highlights = require("catppuccin.special.bufferline").get_theme(),
 			options = {
 
 				indicator = {
