@@ -1,131 +1,126 @@
+local has_words_before = function()
+	local col = vim.api.nvim_win_get_cursor(0)[2]
+	if col == 0 then
+		return false
+	end
+	local line = vim.api.nvim_get_current_line()
+	return line:sub(col, col):match("%s") == nil
+end
+
 return {
-	{
-		-- Code Completion
-		"hrsh7th/nvim-cmp",
-		event = "InsertEnter",
-		dependencies = {
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-path",
-			-- luasnip
-			"L3MON4D3/LuaSnip",
-			"saadparwaiz1/cmp_luasnip",
-			-- snippets
-			"rafamadriz/friendly-snippets",
-			-- lspkind
-			"onsails/lspkind.nvim",
+	"saghen/blink.cmp",
+	-- optional: provides snippets for the snippet source
+	dependencies = { "rafamadriz/friendly-snippets", "onsails/lspkind.nvim" },
+
+	-- use a release tag to download pre-built binaries
+	version = "1.*",
+	-- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
+	-- build = 'cargo build --release',
+	-- If you use nix, you can build from source using latest nightly rust with:
+	-- build = 'nix run .#build-plugin',
+
+	---@module 'blink.cmp'
+	---@type blink.cmp.Config
+	opts = {
+		-- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
+		-- 'super-tab' for mappings similar to vscode (tab to accept)
+		-- 'enter' for enter to accept
+		-- 'none' for no mappings
+		--
+		-- All presets have the following mappings:
+		-- C-space: Open menu or open docs if already open
+		-- C-n/C-p or Up/Down: Select next/previous item
+		-- C-e: Hide menu
+		-- C-k: Toggle signature help (if signature.enabled = true)
+		--
+		-- See :h blink-cmp-config-keymap for defining your own keymap
+
+		keymap = {
+			preset = "enter",
+			["<Tab>"] = {
+				function(cmp)
+					if has_words_before() then
+						return cmp.show()
+					end
+				end,
+				"snippet_forward",
+				"select_next",
+				"fallback",
+			},
+			["<S-Tab>"] = {
+				function(cmp)
+					if has_words_before() then
+						return cmp.show()
+					end
+				end,
+				"snippet_backward",
+				"select_prev",
+				"fallback",
+			},
 		},
-		config = function()
-			local has_words_before = function()
-				local unpack = unpack or table.unpack
-				local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-				return col ~= 0
-					and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-			end
 
-			local cmp = require("cmp")
-			local lspkind = require("lspkind")
-			local luasnip = require("luasnip")
+		appearance = {
+			-- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+			-- Adjusts spacing to ensure icons are aligned
+			nerd_font_variant = "normal",
+		},
 
-			require("luasnip.loaders.from_vscode").lazy_load()
-			require("luasnip.loaders.from_snipmate").lazy_load()
-
-			cmp.setup({
-				formatting = {
-					format = lspkind.cmp_format({
-						mode = "symbol",
-						max_width = 60,
-						ellipsis_char = "...",
-						preset = "codicons",
-						before = function(entry, vim_item)
-							vim_item.menu = ({
-								nvim_lsp = "[LSP]",
-								look = "[Dict]",
-								luasnip = "[Snippet]",
-								buffer = "[Buffer]",
-							})[entry.source.name]
-							return vim_item
-						end,
-					}),
+		-- (Default) Only show the documentation popup when manually triggered
+		completion = {
+			trigger = {
+				show_on_insert = false,
+			},
+			list = {
+				selection = {
+					preselect = false,
 				},
-				snippet = {
-					expand = function(args)
-						luasnip.lsp_expand(args.body) -- For `luasnip` users.
-					end,
+			},
+			menu = {
+				border = "rounded",
+				draw = {
+					columns = {
+						{ "label", "label_description", gap = 1 },
+						{ "kind_icon", "kind", gap = 1 },
+						{ "source_name" },
+					},
+					components = {
+						kind_icon = {
+							text = function(ctx)
+								local icon = ctx.kind_icon
+								icon = require("lspkind").symbolic(ctx.kind, {
+									mode = "codicons",
+								})
+								return icon .. ctx.icon_gap
+							end,
+						},
+					},
 				},
-				window = {
-					completion = cmp.config.window.bordered(),
-					documentation = cmp.config.window.bordered(),
-				},
-				mapping = cmp.mapping.preset.insert({
-					["<C-b>"] = cmp.mapping.scroll_docs(-4),
-					["<C-f>"] = cmp.mapping.scroll_docs(4),
-					["<C-Space>"] = cmp.mapping.complete(),
-					["<C-e>"] = cmp.mapping.abort(),
-					["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-					["<Tab>"] = cmp.mapping(function(fallback)
-						if cmp.visible() then
-							cmp.select_next_item()
-						elseif luasnip.expand_or_jumpable() then
-							luasnip.expand_or_jump()
-						elseif has_words_before() then
-							cmp.complete()
-						else
-							fallback()
-						end
-					end, { "i", "s" }),
-					["<S-Tab>"] = cmp.mapping(function(fallback)
-						if cmp.visible() then
-							cmp.select_prev_item()
-						elseif luasnip.jumpable(-1) then
-							luasnip.jump(-1)
-						elseif has_words_before() then
-							cmp.complete()
-						else
-							fallback()
-						end
-					end, { "i", "s" }),
-				}),
+			},
+			documentation = {
+				auto_show = true,
+				auto_show_delay_ms = 250,
+				treesitter_highlighting = true,
+				window = { border = "rounded" },
+			},
+		},
 
-				sources = cmp.config.sources({
-					{ name = "nvim_lsp" },
-					{ name = "luasnip" }, -- For vsnip users.
-					{ name = "buffer" },
-					{ name = "path" },
-				}),
-			})
+		-- Default list of enabled providers defined so that you can extend it
+		-- elsewhere in your config, without redefining it, due to `opts_extend`
+		sources = {
+			default = { "lsp", "path", "snippets", "buffer" },
+		},
 
-			-- Set configuration for specific filetype.
-			cmp.setup.filetype("gitcommit", {
-				sources = cmp.config.sources({
-					{ name = "cmp_git" }, -- You can specify the `cmp_git` source if you were installed it.
-				}, {
-					{ name = "buffer" },
-				}),
-			})
+		cmdline = {
+			keymap = { preset = "cmdline" },
+			completion = { menu = { auto_show = true } },
+		},
 
-			-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-			cmp.setup.cmdline("/", {
-				mapping = cmp.mapping.preset.cmdline(),
-				sources = {
-					{ name = "buffer" },
-				},
-			})
-
-			-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-		end,
+		-- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
+		-- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
+		-- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
+		--
+		-- See the fuzzy documentation for more information
+		fuzzy = { implementation = "prefer_rust_with_warning" },
 	},
-	{
-		"hrsh7th/cmp-cmdline",
-		config = function()
-			local cmp = require("cmp")
-			cmp.setup.cmdline(":", {
-				mapping = cmp.mapping.preset.cmdline(),
-				sources = cmp.config.sources({
-					{ name = "path" },
-				}, {
-					{ name = "cmdline" },
-				}),
-			})
-		end,
-	},
+	opts_extend = { "sources.default" },
 }
