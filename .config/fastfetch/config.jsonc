@@ -25,12 +25,12 @@
             "format": "{user-name}"
         },
         {
-            "key": "│ {#32}󰇅 hname   {#keys}│",
+            "key": "│ {#32} hname   {#keys}│",
             "type": "title",
             "format": "{host-name}"
         },
         {
-            "key": "│ {#33}󰅐 uptime  {#keys}│",
+            "key": "│ {#33} uptime  {#keys}│",
             "type": "uptime"
         },
         {
@@ -42,7 +42,7 @@
             "type": "kernel"
         },
         {
-            "key": "│ {#36}󰇄 desktop {#keys}│",
+            "key": "│ {#36} desktop {#keys}│",
             "type": "de"
         },
         {
@@ -59,12 +59,12 @@
             "showPeCoreCount": true
         },
         {
-            "key": "│ {#34}󰉉 disk    {#keys}│",
+            "key": "│ {#34}🖫 disk    {#keys}│",
             "type": "disk",
             "folders": "/"
         },
         {
-            "key": "│ {#35} memory  {#keys}│",
+            "key": "│ {#35}󰜫 memory  {#keys}│",
             "type": "memory"
         },
         {
@@ -72,7 +72,7 @@
             "type": "custom"
         },
         {
-            "key": "│ {#39} colors  {#keys}│",
+            "key": "│ {#39} colors  {#keys}│",
             "type": "colors",
             "symbol": "circle"
         },
