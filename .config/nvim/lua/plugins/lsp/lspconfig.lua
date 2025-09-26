@@ -2,7 +2,7 @@ return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
-		"hrsh7th/cmp-nvim-lsp",
+		'saghen/blink.cmp'
 	},
 	config = function()
 		-- Mappings. See `:help vim.diagnostic.*` for documentation on any of the below functions local opts = { noremap = true, silent = true }
@@ -39,12 +39,34 @@ return {
 			end,
 		})
 		--diagnostics
-		local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-		for type, icon in pairs(signs) do
-			local hl = "DiagnosticSign" .. type
-			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-		end
-		vim.diagnostic.config({ virtual_lines = { current_line = true } })
+		-- local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+		-- for type, icon in pairs(signs) do
+		-- 	local hl = "DiagnosticSign" .. type
+		-- 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+		-- end
+		vim.diagnostic.config({
+			signs = {
+				text = {
+					[vim.diagnostic.severity.ERROR] = " ",
+					[vim.diagnostic.severity.WARN] = " ",
+					[vim.diagnostic.severity.HINT] = " ",
+					[vim.diagnostic.severity.INFO] = " ",
+				},
+				texthl = {
+					[vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+					[vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+					[vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+					[vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+				},
+				numhl = {
+					[vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+					[vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+					[vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+					[vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+				},
+			},
+			virtual_lines = { current_line = true },
+		})
 
 		-- Setup lspconfig.
 
@@ -60,7 +82,7 @@ return {
 			"qmlls",
 		}
 
-		local capabilities = require("cmp_nvim_lsp").default_capabilities()
+		local capabilities = require('blink.cmp').get_lsp_capabilities()
 
 		vim.lsp.config("*", { capabilities = capabilities })
 
@@ -117,7 +139,7 @@ return {
 							vim.env.VIMRUNTIME,
 							-- Depending on the usage, you might want to add additional paths
 							-- here.
-							"${3rd}/luv/library",
+							-- "${3rd}/luv/library",
 							-- '${3rd}/busted/library'
 						},
 						-- Or pull in all of 'runtimepath'.
