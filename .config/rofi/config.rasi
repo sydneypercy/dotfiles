@@ -2,7 +2,8 @@
 @theme "catppuccin-default"
 
 configuration {
-    modi: "drun,run,window";
+	font: "CozetteVector 16";
+    modi: "drun";
     icon-theme: "Papirus";
     show-icons: true;
     terminal: "foot";
@@ -10,10 +11,8 @@ configuration {
     location: 0;
     disable-history: false;
     hide-scrollbar: true;
-    display-drun: "   Apps ";
-    display-run: "   Run ";
-    display-window: " 﩯  Window";
-    display-Network: " 󰤨  Network";
-    sidebar-mode: true;
+    display-drun: " ⏻  Apps ";
+    display-window: "   Window";
+    display-Network: "  Network";
 }
 
