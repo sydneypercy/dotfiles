@@ -54,12 +54,12 @@
             "type": "shell"
         },
         {
-            "key": "│ {#33}󰍛 cpu     {#keys}│",
+            "key": "│ {#33} cpu     {#keys}│",
             "type": "cpu",
             "showPeCoreCount": true
         },
         {
-            "key": "│ {#34}🖫 disk    {#keys}│",
+            "key": "│ {#34} disk    {#keys}│",
             "type": "disk",
             "folders": "/"
         },
