@@ -36,7 +36,9 @@ element {
     padding: 1px ;
     cursor:  pointer;
     spacing: 5px ;
-    border:  0;
+	border-radius: 10px;
+	margin: 5px;
+	padding: 5px;
 }
 element normal.normal {
     background-color: @normal-background;
@@ -79,14 +81,17 @@ element-text {
     cursor:           inherit;
     highlight:        inherit;
     text-color:       inherit;
+	vertical-align:	  0.5;
 }
 element-icon {
     background-color: transparent;
-    size:             1.0000em ;
+    size:             2.0000em ;
     cursor:           inherit;
     text-color:       inherit;
 }
 window {
+	fullscreen: false;
+	border-radius: 1em;
     padding:          5;
     background-color: @background;
     border:           1;
@@ -104,14 +109,18 @@ textbox {
     text-color: @foreground;
 }
 listview {
+	columns:	  2;
     padding:      2px 0px 0px ;
     scrollbar:    true;
     border-color: @separatorcolor;
-    spacing:      2px ;
-    fixed-height: 0;
-    border:       2px dash 0px 0px ;
+    spacing:      2px;
+    fixed-height: true;
+	lines:		5;
+	cycle:		  true;
+	margin: 1em;
 }
 scrollbar {
+	handle-rounded-corners: true;
     width:        4px ;
     padding:      0;
     handle-width: 8px ;
@@ -146,7 +155,9 @@ textbox-num-sep {
 }
 inputbar {
     padding:    1px ;
+	margin: 1em;
     spacing:    0px ;
+	vertical-align: 0.5;
     text-color: @normal-foreground;
     children:   [ "prompt","textbox-prompt-colon","entry","num-filtered-rows","textbox-num-sep","num-rows","case-indicator" ];
 }
@@ -166,6 +177,7 @@ prompt {
     text-color: @normal-foreground;
 }
 textbox-prompt-colon {
+	vertical-align: 0.5;
     margin:     0px 0.3000em 0.0000em 0.0000em ;
     expand:     false;
     str:        ":";
