@@ -14,11 +14,14 @@ autoload -U compinit
 
 export GRIMBLAST_EDITOR="swappy -f"
 export PATH="$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.local/share/nvim/mason/bin"
-export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 export MUSIC_DIR='~/Music'
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 export QT_QPA_PLATFORMTHEME=qt5ct
+
+# fzf 
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+export FZF_CTRL_T_OPTS="--walker file,dir,hidden"
 
 function yy() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
