@@ -111,8 +111,19 @@ return {
 		},
 
 		cmdline = {
-			keymap = { preset = "cmdline" },
-			completion = { menu = { auto_show = true } },
+			keymap = {
+				preset = "cmdline",
+				["<CR>"] = { "accept_and_enter", "fallback" },
+			},
+			completion = {
+				ghost_text = { enabled = true },
+				menu = { auto_show = true },
+				list = {
+					selection = {
+						preselect = false,
+					},
+				},
+			},
 		},
 
 		-- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
