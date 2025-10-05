@@ -13,6 +13,21 @@ use = "uhs-robert/recycle-bin"
 rev = "03f6c4a"
 hash = "f14a951bf376d7fe73033c4a48aa5fa4"
 
+[[plugin.deps]]
+use = "stelcodes/bunny"
+rev = "7137a44"
+hash = "58bfa473bcac8574400e573787954512"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:smart-enter"
+rev = "d1c8baa"
+hash = "56fdabc96fc1f4d53c96eb884b02a5be"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:smart-paste"
+rev = "d1c8baa"
+hash = "75fd60b2df7115e0a6ca31a6a804d320"
+
 [[flavor.deps]]
 use = "yazi-rs/flavors:catppuccin-macchiato"
 rev = "2d73b79"
