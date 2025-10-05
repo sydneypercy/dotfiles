@@ -4,6 +4,10 @@ local thing = {
 		"nvimdev/guard-collection",
 	},
 	config = function()
+		vim.g.guard_config = {
+			fmt_on_save = true,
+			lsp_as_default_formatter = true,
+		}
 		local ft = require("guard.filetype")
 		ft("lua"):fmt("lsp"):append("stylua")
 		ft("c,cpp"):fmt({
