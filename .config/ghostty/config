@@ -1,0 +1,15 @@
+theme = Catppuccin Macchiato
+font-family = Cozette
+font-size = 20
+window-padding-x = 16
+window-padding-y = 16
+font-codepoint-map = U+0E0B0-U+0E0BF,U+02500-U+0259F=Cozette
+freetype-load-flags = monochrome
+
+
+cursor-style = block
+cursor-style-blink = true
+shell-integration-features = no-cursor,sudo,title
+
+quit-after-last-window-closed = true
+quit-after-last-window-closed-delay = 10m
