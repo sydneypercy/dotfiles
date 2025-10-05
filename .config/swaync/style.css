@@ -164,6 +164,7 @@ trough {
 
 .control-center .widget-title > label {
     color: #cad3f5;
+    margin-top: 0.5em;
     font-size: 1.3em;
 }
 
@@ -198,7 +199,8 @@ scrollbar trough {
 
 /* dnd */
 .widget-dnd {
-    margin-top: 5px;
+    margin-bottom: 1em;
+    margin-top: 1em;
     border-radius: 8px;
     font-size: 1.1rem;
 }
@@ -318,6 +320,7 @@ scrollbar trough {
 
 .widget-backlight label {
     font-size: 1.5rem;
+    padding: 0 1rem;
     color: #eed49f;
 }
 

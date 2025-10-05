@@ -6,9 +6,9 @@
     "control-center-layer": "top",
     "layer-shell": true,
     "cssPriority": "user",
-    "control-center-margin-top": 2,
-    "control-center-margin-bottom": 2,
-    "control-center-margin-right": 1,
+    "control-center-margin-top": 10,
+    "control-center-margin-bottom": 10,
+    "control-center-margin-right": 18,
     "control-center-margin-left": 0,
     "notification-2fa-action": true,
     "notification-inline-replies": false,
@@ -63,6 +63,9 @@
         "buttons-grid"
     ],
     "widget-config": {
+        "notifications": {
+            "vexpand": true
+        },
         "inhibitors": {
             "text": "Inhibitors",
             "button-text": "Clear All",
