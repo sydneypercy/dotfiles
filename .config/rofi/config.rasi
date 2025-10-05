@@ -6,7 +6,7 @@ configuration {
     modi: "drun";
     icon-theme: "Papirus";
     show-icons: true;
-    terminal: "foot";
+    terminal: "ghostty";
     drun-display-format: "{icon} {name}";
     location: 0;
     disable-history: false;
