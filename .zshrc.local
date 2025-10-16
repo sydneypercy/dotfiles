@@ -8,9 +8,7 @@ alias cd="z"
 alias cat="bat --paging=never"
 
 #testing
-autoload -U bashcompinit
-bashcompinit
-autoload -U compinit
+autoload -Uz compinit && compinit
 
 export GRIMBLAST_EDITOR="swappy -f"
 export PATH="$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.local/share/nvim/mason/bin"
@@ -20,7 +18,16 @@ export XMODIFIERS=@im=fcitx
 export QT_QPA_PLATFORMTHEME=qt5ct
 
 # fzf 
+
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+FZF_DEFAULT_OPTS+=" \
+--color=bg+:#363A4F,bg:#24273A,spinner:#F4DBD6,hl:#ED8796 \
+--color=fg:#CAD3F5,header:#ED8796,info:#C6A0F6,pointer:#F4DBD6 \
+--color=marker:#B7BDF8,fg+:#CAD3F5,prompt:#C6A0F6,hl+:#ED8796 \
+--color=selected-bg:#494D64 \
+--color=border:#6E738D,label:#CAD3F5"
 export FZF_CTRL_T_OPTS="--walker file,dir,hidden"
 
 function yy() {
@@ -42,7 +49,8 @@ setopt hist_find_no_dups
 export EDITOR="nvim"
 eval "$(zoxide init zsh)"
 eval "$(oh-my-posh init zsh --config ~/testing.omp.json)"
-eval "$(fzf --zsh)"
+
+# zstyle ':completion:*' menu no
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
