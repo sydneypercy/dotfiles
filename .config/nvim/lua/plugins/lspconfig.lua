@@ -2,7 +2,7 @@ return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
-		'saghen/blink.cmp'
+		"saghen/blink.cmp",
 	},
 	config = function()
 		-- Mappings. See `:help vim.diagnostic.*` for documentation on any of the below functions local opts = { noremap = true, silent = true }
@@ -72,17 +72,19 @@ return {
 
 		local servers = {
 			"clangd",
-			"ccls",
 			"lua_ls",
-			"pyright",
+			"pylsp",
 			"marksman",
 			"texlab",
+			"biome",
+			"html",
 			"cssls",
-			"jsonls",
-			"qmlls",
+			"emmet_language_server",
+			"eslint",
+			"ts_ls",
 		}
 
-		local capabilities = require('blink.cmp').get_lsp_capabilities()
+		local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 		vim.lsp.config("*", { capabilities = capabilities })
 
