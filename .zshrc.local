@@ -4,6 +4,7 @@ alias ls="exa --icons"
 alias la="exa -la"
 # alias lf="lfrun"
 alias nv="nvim"
+alias vim="nvim"
 alias cd="z"
 alias cat="bat --paging=never"
 
