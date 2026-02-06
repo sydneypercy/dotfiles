@@ -1,11 +1,14 @@
 local bg_col = "#1e1e2e"
-local toggle_bg_picture = false
+local toggle_bg_picture = true
+
+local pink = "#ea76cb"
+local green = "#40a02b"
+local orange = "#fe640b"
 
 local primary_col = "#cba6f7"
-local secondary_col = "#89dceb"
 
 local ninbot_anchor = "right" -- topleft, top, topright, left, right, bottomleft, bottomright
-local ninbot_opacity = 0.8 -- 0 to 1
+local ninbot_opacity = 1 -- 0 to 1
 
 local res_1440 = false
 
@@ -104,7 +107,7 @@ local mirrors = {
 		dst = { x = thin_pie.x, y = thin_pie.y, w = 420 * thin_pie.size / 4, h = 423 * thin_pie.size / 4 },
 		color_key = {
 			input = "#E446C4",
-			output = secondary_col,
+			output = pink,
 		},
 	}),
 	thin_pie_unspecified = make_mirror({
@@ -112,7 +115,7 @@ local mirrors = {
 		dst = { x = thin_pie.x, y = thin_pie.y, w = 420 * thin_pie.size / 4, h = 423 * thin_pie.size / 4 },
 		color_key = {
 			input = "#46CE66",
-			output = secondary_col,
+			output = green,
 		},
 	}),
 	thin_pie_blockentities = make_mirror({
@@ -120,7 +123,7 @@ local mirrors = {
 		dst = { x = thin_pie.x, y = thin_pie.y, w = 420 * thin_pie.size / 4, h = 423 * thin_pie.size / 4 },
 		color_key = {
 			input = "#ec6e4e",
-			output = primary_col,
+			output = orange,
 		},
 	}),
 	thin_pie_destroyProgress = make_mirror({
@@ -128,7 +131,7 @@ local mirrors = {
 		dst = { x = thin_pie.x, y = thin_pie.y, w = 420 * thin_pie.size / 4, h = 423 * thin_pie.size / 4 },
 		color_key = {
 			input = "#CC6C46",
-			output = secondary_col,
+			output = pink,
 		},
 	}),
 	thin_pie_prepare = make_mirror({
@@ -136,7 +139,7 @@ local mirrors = {
 		dst = { x = thin_pie.x, y = thin_pie.y, w = 420 * thin_pie.size / 4, h = 423 * thin_pie.size / 4 },
 		color_key = {
 			input = "#464C46",
-			output = secondary_col,
+			output = pink,
 		},
 	}),
 
@@ -149,7 +152,7 @@ local mirrors = {
 		dst = { x = thin_percent.x, y = thin_percent.y, w = 33 * thin_percent.size, h = 25 * thin_percent.size },
 		color_key = {
 			input = "#e96d4d",
-			output = secondary_col,
+			output = orange,
 		},
 	}),
 	thin_percent_unspecified = make_mirror({
@@ -157,7 +160,7 @@ local mirrors = {
 		dst = { x = thin_percent.x, y = thin_percent.y, w = 33 * thin_percent.size, h = 25 * thin_percent.size },
 		color_key = {
 			input = "#45cb65",
-			output = secondary_col,
+			output = green,
 		},
 	}),
 
@@ -170,7 +173,7 @@ local mirrors = {
 		dst = { x = tall_pie.x, y = tall_pie.y, w = 420 * tall_pie.size / 4, h = 423 * tall_pie.size / 4 },
 		color_key = {
 			input = "#E446C4",
-			output = secondary_col,
+			output = pink,
 		},
 	}),
 	tall_pie_unspecified = make_mirror({
@@ -178,7 +181,7 @@ local mirrors = {
 		dst = { x = tall_pie.x, y = tall_pie.y, w = 420 * tall_pie.size / 4, h = 423 * tall_pie.size / 4 },
 		color_key = {
 			input = "#46CE66",
-			output = secondary_col,
+			output = green,
 		},
 	}),
 	tall_pie_blockentities = make_mirror({
@@ -186,7 +189,7 @@ local mirrors = {
 		dst = { x = tall_pie.x, y = tall_pie.y, w = 420 * tall_pie.size / 4, h = 423 * tall_pie.size / 4 },
 		color_key = {
 			input = "#ec6e4e",
-			output = primary_col,
+			output = orange,
 		},
 	}),
 	tall_pie_destroyProgress = make_mirror({
@@ -194,7 +197,7 @@ local mirrors = {
 		dst = { x = tall_pie.x, y = tall_pie.y, w = 420 * tall_pie.size / 4, h = 423 * tall_pie.size / 4 },
 		color_key = {
 			input = "#CC6C46",
-			output = secondary_col,
+			output = pink,
 		},
 	}),
 	tall_pie_prepare = make_mirror({
@@ -202,7 +205,7 @@ local mirrors = {
 		dst = { x = tall_pie.x, y = tall_pie.y, w = 420 * tall_pie.size / 4, h = 423 * tall_pie.size / 4 },
 		color_key = {
 			input = "#464C46",
-			output = secondary_col,
+			output = pink,
 		},
 	}),
 
@@ -215,7 +218,7 @@ local mirrors = {
 		dst = { x = tall_percent.x, y = tall_percent.y, w = 33 * tall_percent.size, h = 25 * tall_percent.size },
 		color_key = {
 			input = "#e96d4d",
-			output = secondary_col,
+			output = orange,
 		},
 	}),
 	tall_percent_unspecified = make_mirror({
@@ -223,7 +226,7 @@ local mirrors = {
 		dst = { x = tall_percent.x, y = tall_percent.y, w = 33 * tall_percent.size, h = 25 * tall_percent.size },
 		color_key = {
 			input = "#45cb65",
-			output = secondary_col,
+			output = orange,
 		},
 	}),
 
