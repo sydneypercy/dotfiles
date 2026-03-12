@@ -5,6 +5,19 @@ return {
 	---@type snacks.Config
 	opts = {
 		bigfile = { enabled = true },
+		animate = {
+			easing = "outQuart",
+			fps = 144,
+		},
+		terminal = {
+			win = {
+				style = "float",
+				width = math.floor(vim.o.columns * 0.5),
+				height = math.floor(vim.o.lines * 0.5),
+				minimal = false,
+				border = "rounded",
+			},
+		},
 		dashboard = {
 			enabled = true,
 			sections = {
