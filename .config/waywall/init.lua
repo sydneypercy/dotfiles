@@ -44,6 +44,12 @@ local config = {
 		repeat_delay = 300,
 		sensitivity = 4.633257950030503,
 		confine_pointer = false,
+		remaps = {
+			--			["CAPSLOCK"] = "F3",
+			--			["F3"] = "CAPSLOCK",
+			["D"] = "O",
+			["O"] = "D",
+		},
 	},
 	theme = {
 		background = bg_col,
