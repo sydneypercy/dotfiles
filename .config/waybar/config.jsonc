@@ -8,7 +8,7 @@
     // Choose the order of the modules
     "modules-left": [
         "custom/power",
-        "hyprland/workspaces",
+        "sway/workspaces",
         "cpu",
         "memory",
         "disk",
@@ -45,6 +45,21 @@
             "3": "",
             "urgent": "",
             "focused": "",
+            "default": ""
+        }
+    },
+    "sway/workspaces": {
+        //"on-scroll-up": "hyprctl dispatch workspace e+1",
+        //"on-scroll-down": "hyprctl dispatch workspace e-1",
+        "all-outputs": true,
+        "warp-on-scroll": false,
+        "format": "{icon}",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "urgent": "",
+            // "focused": "",
             "default": ""
         }
     },
@@ -172,7 +187,8 @@
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "disk": {
-        "format": "{percentage_used}% 󰋊"
+        "format": "{percentage_used}% 󰋊",
+        "path": "/home"
     },
     "pulseaudio": {
         "scroll-step": 1, // %, can be a float
