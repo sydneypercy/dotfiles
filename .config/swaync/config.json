@@ -96,7 +96,7 @@
         "buttons-grid": {
             "actions": [
                 {
-                    "label": "直",
+                    "label": "",
                     "type": "toggle",
                     "active": true,
                     "command": "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && nmcli radio wifi on || nmcli radio wifi off'",
@@ -115,10 +115,6 @@
                     "active": false,
                     "command": "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && rfkill block all || rfkill unblock all'",
                     "update_command": "sh -c '[[ $(nmcli radio wifi) == \"enabled\" ]] && echo true || echo false'"
-                },
-                {
-                    "label": "󰹑",
-                    "command": "sh -c 'swaync-client -cp; sleep 0.5 && grimblast edit area'"
                 }
             ]
         }
