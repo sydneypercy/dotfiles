@@ -1,3 +1,5 @@
+-- my minecraft sens is like 0.02291165 something i forgot
+
 local bg_col = "#1e1e2e"
 local toggle_bg_picture = true
 
