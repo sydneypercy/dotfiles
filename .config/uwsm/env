@@ -1,8 +1,8 @@
-export LIBVA_DRIVER_NAME=nvidia
-export __GLX_VENDOR_LIBRARY_NAME=nvidia
+# export LIBVA_DRIVER_NAME=nvidia
+# export __GLX_VENDOR_LIBRARY_NAME=nvidia
 export QT_QPA_PLATFORM=wayland
 export QT_QPA_PLATFORMTHEME=qt5ct
 export GRIMBLAST_EDITOR=swappy -f
 export GAMEMODERUNEXEC="env __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia __VK_LAYER_NV_optimus=NVIDIA_only"
 export ELECTRON_OZONE_PLATFORM_HINT=wayland
-export NVD_BACKEND=direct
+# export NVD_BACKEND=direct

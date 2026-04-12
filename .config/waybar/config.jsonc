@@ -1,14 +1,14 @@
 // -*- mode: jsonc -*-
 {
     "layer": "bottom", // Waybar at top layer
-    "margin-bottom": -5,
+    "margin-bottom": 0,
     //"position": "left", // Waybar position (top|bottom|left|right) "height": 10, // Waybar height (to be removed for auto height)
     //"width": 1920, // Waybar width
     "spacing": 5, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
         "custom/power",
-        "sway/workspaces",
+        "hyprland/workspaces",
         "cpu",
         "memory",
         "disk",

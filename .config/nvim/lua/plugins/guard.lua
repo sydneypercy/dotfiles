@@ -10,12 +10,12 @@ local thing = {
 		}
 		local ft = require("guard.filetype")
 		ft("lua"):fmt("stylua")
+		ft("tex"):fmt("latexindent")
 		ft("c,cpp"):fmt({
 			cmd = "clang-format",
 			args = { "-style={BasedOnStyle: LLVM,IndentWidth: 4}" },
 			stdin = true,
 		})
-
 
 		ft("typescript,javascript,html,css,scss,json,jsonc"):fmt({
 			cmd = "npx",
@@ -24,7 +24,7 @@ local thing = {
 			stdin = true,
 		})
 
-		ft("typescript,javascript"):lint('eslint')
+		ft("typescript,javascript"):lint("eslint")
 
 		vim.g.guard_config = {
 			fmt_on_save = true,

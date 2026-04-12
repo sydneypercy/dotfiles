@@ -33,7 +33,7 @@ local reset_wall_key = "Ctrl-R"
 local waywall_config_path = os.getenv("HOME") .. "/.config/waywall/"
 local bg_path = waywall_config_path .. "resources/background.png"
 
-local nb_path = waywall_config_path .. "resources/Ninjabrain-Bot-1.5.1.jar"
+local nb_path = waywall_config_path .. "resources/Ninjabrain-Bot-1.5.2.jar"
 local overlay_path = waywall_config_path .. "resources/boatoverlay.png"
 
 local waywall = require("waywall")
@@ -368,8 +368,33 @@ local reset_wall = function()
 	waywall.press_key("T")
 end
 
+local y_mirror = nil
+local y_mirror_size = { w = 240, h = 40 }
+local toggle_y_mirror = function()
+	if y_mirror == nil then
+		y_mirror = waywall.mirror({
+			src = { x = 90, y = 300, w = 200, h = 30 },
+			dst = { x = 1920 / 2 - y_mirror_size.w / 2, y = 1080 / 2 + 10, w = y_mirror_size.w, h = y_mirror_size.h },
+			color_key = {
+				input = "#dddddd",
+				output = "#ffffff",
+			},
+			depth = 10,
+		})
+	else
+		y_mirror:close()
+		y_mirror = nil
+	end
+end
+
 --*********************************************************************************************** KEYBINDS
 config.actions = {
+	["*-l"] = function()
+		if waywall.active_res() == 0 then
+			toggle_y_mirror()
+		end
+	end,
+
 	[thin_key] = function()
 		resolutions.thin()
 	end,
