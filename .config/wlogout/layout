@@ -6,19 +6,19 @@
 }
 {
     "label" : "hibernate",
-    "action" : "systemctl hibernate",
+    "action" : "hyprshutdown -t 'Hibernating...' --post-cmd 'systemctl hibernate' ",
     "text" : "Hibernate",
     "keybind" : "h"
 }
 {
     "label" : "logout",
-    "action" : "loginctl kill-session $XDG_SESSION_ID",
+    "action" : "hyprshutdown  -t 'Logging out ...' --post-cmd 'loginctl kill-session $XDG_SESSION_ID'",
     "text" : "Logout",
     "keybind" : "e"
 }
 {
     "label" : "shutdown",
-    "action" : "systemctl poweroff",
+    "action" : "hyprshutdown -t 'Shutting down...' --post-cmd 'systemctl poweroff' "
     "text" : "Shutdown",
     "keybind" : "s"
 }
@@ -30,7 +30,7 @@
 }
 {
     "label" : "reboot",
-    "action" : "systemctl reboot",
+    "action" : "hyprshutdown -t 'Rebooting...' --post-cmd 'systemctl reboot' ",
     "text" : "Reboot",
     "keybind" : "r"
 }
