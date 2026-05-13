@@ -12,8 +12,8 @@
         "cpu",
         "memory",
         "disk",
-        "custom/updates"
-        //"hyprland/window"
+        "custom/updates",
+        "hyprland/submap"
     ],
     "modules-center": ["cava"],
     "modules-right": [
