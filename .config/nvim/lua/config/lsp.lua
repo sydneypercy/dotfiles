@@ -72,6 +72,7 @@ local servers = {
 	"cssls",
 	"emmet_language_server",
 	"eslint",
+	"vhdl_ls",
 }
 
 vim.lsp.enable(servers)
