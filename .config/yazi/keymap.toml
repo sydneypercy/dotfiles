@@ -12,7 +12,7 @@ prepend_keymap = [
 	{ desc = "Start bunny.yazi",on = ";", run = "plugin bunny"},
 	{ desc = "Start bunny.yazi fuzzy search", on = "'", run = "plugin bunny fuzzy" },
 	
-	{ on  = "<C-n>", run = 'shell -- dragon-drop -x -i -T "$@"', desc = "Drag and drop" },
+	{ on  = "<C-n>", run = 'shell -- dragon-drop -x -i -T -a "$@"', desc = "Drag and drop" },
     # Mount
     { on = [ "M", "m" ], run = "plugin gvfs -- select-then-mount", desc = "Select device then mount" },
     # or this if you want to jump to mountpoint after mounted
